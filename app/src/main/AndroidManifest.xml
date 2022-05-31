@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.hadiagdamapps.paarseh">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,13 +17,36 @@
         android:theme="@style/Theme.Paarseh"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".ListenAndRepeatSentencesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.step.StepActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.register.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.login.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.main.MainActivity"
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
     </application>
 
