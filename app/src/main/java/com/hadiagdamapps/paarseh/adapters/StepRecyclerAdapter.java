@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.hadiagdamapps.paarseh.R;
 import com.hadiagdamapps.paarseh.activity.step.StepActivity;
+import com.hadiagdamapps.paarseh.helpers.DataManager;
 import com.hadiagdamapps.paarseh.models.StepRecyclerModel;
 
 import java.util.ArrayList;
@@ -36,10 +37,12 @@ public class StepRecyclerAdapter extends RecyclerView.Adapter<StepRecyclerAdapte
 
 
     private void go(int id) {
-        Intent intent = new Intent(self, StepActivity.class);
-        intent.putExtra("step_id", id + "");
+//        Intent intent = new Intent(self, StepActivity.class);
+//        intent.putExtra("step_id", id + "");
 
-        self.startActivity(intent);
+        DataManager.writeData(self, DataManager.Keys.STEP_ID_KEY, id + "");
+
+        self.startActivity(new Intent(self, StepActivity.class));
     }
 
 

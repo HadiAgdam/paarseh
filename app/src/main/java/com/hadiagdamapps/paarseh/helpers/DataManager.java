@@ -15,6 +15,7 @@ public class DataManager {
         public static final String USER_PHONE_KEY = "user_phone";
         public static final String USER_PASSWORD_KEY = "user_password";
         public static final String USER_NAME_KEY = "user_name";
+        public static final String STEP_ID_KEY = "step_id";
     }
 
 

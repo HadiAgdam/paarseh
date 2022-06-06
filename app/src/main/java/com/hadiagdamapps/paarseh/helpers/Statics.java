@@ -13,4 +13,12 @@ public class Statics {
     }
 
     public static final String BASE_URL = "https://hadiagdam.pythonanywhere.com/";
+
+
+    public static void clearSession(Context self) {
+        DataManager.clearData(self, "phone");
+        DataManager.clearData(self, "password");
+        self.startActivity(new Intent(self, LoginActivity.class));
+    }
+
 }

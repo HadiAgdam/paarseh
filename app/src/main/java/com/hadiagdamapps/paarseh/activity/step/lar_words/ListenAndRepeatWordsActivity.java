@@ -1,9 +1,14 @@
-package com.hadiagdamapps.paarseh.activity.step.lar_sentences;
+package com.hadiagdamapps.paarseh.activity.step.lar_words;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.speech.RecognizerIntent;
@@ -13,35 +18,21 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.airbnb.lottie.LottieAnimationView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.hadiagdamapps.paarseh.R;
+import com.hadiagdamapps.paarseh.activity.step.lar_sentences.ListenAndRepeatSentencesActivity;
 import com.hadiagdamapps.paarseh.adapters.TextRecyclerAdapter;
 import com.hadiagdamapps.paarseh.helpers.DataManager;
 import com.hadiagdamapps.paarseh.helpers.MySingleton;
 import com.hadiagdamapps.paarseh.helpers.Statics;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.Locale;
-import java.util.Random;
 
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-
-public class ListenAndRepeatSentencesActivity extends AppCompatActivity {
+public class ListenAndRepeatWordsActivity extends AppCompatActivity {
 
     private TextView backTextView, speechText, micText, counterText;
     private Context self;
@@ -53,6 +44,48 @@ public class ListenAndRepeatSentencesActivity extends AppCompatActivity {
     private TextToSpeech speech;
     private ConstraintLayout infoLayout;
     private LottieAnimationView lottieAnimationView;
+
+    private void end() {
+        String phone = DataManager.readData(this, DataManager.Keys.USER_PHONE_KEY);
+        String password = DataManager.readData(this, DataManager.Keys.USER_PASSWORD_KEY);
+        String step_id_text = DataManager.readData(this, DataManager.Keys.STEP_ID_KEY);
+        if (phone == null || password == null || step_id_text == null) {
+            toast("NULL data");
+        }
+        Toast.makeText(this, "Passed", Toast.LENGTH_LONG).show();
+        StringRequest request = new StringRequest(Statics.BASE_URL + "addPassed?phone=" + phone + "&password=" + password + "&step_id=" + step_id_text + "&practice=lar_w", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                Log.e("lar_words response", response);
+
+                if (response.equals("ok")) {
+                }
+
+                if (response.equals("invalid practice")) {
+                    Log.e("error", "invalid practice");
+                }
+
+                if (response.equals("user not found")) {
+                    Log.e("error", "user not found");
+                    Statics.clearSession(ListenAndRepeatWordsActivity.this);
+
+                }
+
+                if (response.equals("step not found")) {
+                    Log.e("error", "step not found");
+                }
+
+                finish();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("lar_words error", error.toString());
+            }
+        });
+        MySingleton.getInstance(ListenAndRepeatWordsActivity.this).addToRequestQueue(request);
+    }
 
     View.OnClickListener backListener = new View.OnClickListener() {
         @Override
@@ -78,48 +111,6 @@ public class ListenAndRepeatSentencesActivity extends AppCompatActivity {
             startActivityForResult(intent, 100);
         }
     };
-
-    private void end() {
-        String phone = DataManager.readData(this, DataManager.Keys.USER_PHONE_KEY);
-        String password = DataManager.readData(this, DataManager.Keys.USER_PASSWORD_KEY);
-        String step_id_text = DataManager.readData(this, DataManager.Keys.STEP_ID_KEY);
-        if (phone == null || password == null || step_id_text == null) {
-            toast("NULL data");
-        }
-        Toast.makeText(this, "Passed", Toast.LENGTH_LONG).show();
-        StringRequest request = new StringRequest(Statics.BASE_URL + "addPassed?phone=" + phone + "&password=" + password + "&step_id=" + step_id_text + "&practice=lar_s", new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-                Log.e("lar_sentences response", response);
-
-                if (response.equals("ok")) {
-                }
-
-                if (response.equals("invalid practice")) {
-                    Log.e("error", "invalid practice");
-                }
-
-                if (response.equals("user not found")) {
-                    Log.e("error", "user not found");
-                    Statics.clearSession(ListenAndRepeatSentencesActivity.this);
-
-                }
-
-                if (response.equals("step not found")) {
-                    Log.e("error", "step not found");
-                }
-
-                finish();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("lar_sentences error", error.toString());
-            }
-        });
-        MySingleton.getInstance(ListenAndRepeatSentencesActivity.this).addToRequestQueue(request);
-    }
 
     private String trim(String input) {
         input = input.toLowerCase();
@@ -152,7 +143,7 @@ public class ListenAndRepeatSentencesActivity extends AppCompatActivity {
 
     private void correctAnimation() {
         int[] animations = new int[]{R.raw.animated_emojis_party_emoji, R.raw.emoji_33, R.raw.grinning_face_emoji, R.raw.happy_emoji, R.raw.happy_emoji_great_work, R.raw.love_emoji, R.raw.smiley_emoji, R.raw.tbd_happyface, R.raw.winking_emoji};
-        int r = (int) Math.floor(Math.random() * (animations.length));
+        int r = (int) Math.floor(Math.random() * (animations.length + 1));
 
 
         infoLayout.setVisibility(View.VISIBLE);
@@ -193,7 +184,6 @@ public class ListenAndRepeatSentencesActivity extends AppCompatActivity {
     }
 
     private void next() {
-        Log.e("position", "next");
         if (index != -1) {
             viewList.get(index).setTextColor(getResources().getColor(R.color.black));
         }
@@ -207,10 +197,9 @@ public class ListenAndRepeatSentencesActivity extends AppCompatActivity {
     }
 
     private void initialRecycler() {
-
-        String data = DataManager.readData(this, "listen_repeat_sentences");
+        String data = DataManager.readData(this,"listen_repeat_words");
         if (data == null) {
-            Log.e("lar_sentences", "null");
+            Log.e("lar_words", "null data");
             finish();
             return;
         }
@@ -261,10 +250,11 @@ public class ListenAndRepeatSentencesActivity extends AppCompatActivity {
         }
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listen_and_repeat_sentences);
+        setContentView(R.layout.activity_listen_and_repeat_words);
         main();
     }
 }

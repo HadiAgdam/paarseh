@@ -69,6 +69,7 @@ public class SplashActivity extends AppCompatActivity {
         Log.e("phone", phone);
         Log.e("password", password);
 
+
         if (phone == null || password == null) {
             go(LoginActivity.class);
             return;

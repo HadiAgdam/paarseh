@@ -17,7 +17,25 @@
         android:theme="@style/Theme.Paarseh"
         tools:targetApi="31">
         <activity
-            android:name=".ListenAndRepeatSentencesActivity"
+            android:name=".MainVideoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.step.order_sentences.OrderSentencesActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.step.law.ListenAndWriteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.step.lar_words.ListenAndRepeatWordsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.step.lar_sentences.ListenAndRepeatSentencesActivity"
             android:exported="false" />
         <activity
             android:name=".activity.step.StepActivity"
@@ -28,11 +46,13 @@
         <activity
             android:name=".activity.splash.SplashActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".activity.login.LoginActivity"

@@ -6,4 +6,231 @@
     android:layout_height="match_parent"
     tools:context=".activity.step.StepActivity">
 
+    <!--    <ImageView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:scaleType="centerCrop"/>-->
+    <!---->
+    <!--    <View-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:background="#80000000"/>-->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/navbar"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lar_sentences_container"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="20dp"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/lar_sentences_icon"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/step_item_circle_icon"
+                android:padding="10dp"
+                android:src="@drawable/ic_baseline_mic_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/lar_sentences_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="Listen and repeat sentences."
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                app:layout_constraintLeft_toRightOf="@id/lar_sentences_icon"
+                app:layout_constraintRight_toLeftOf="@id/lar_sentences_check"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:id="@+id/lar_sentences_check"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/check_png"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lar_words_container"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="20dp"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/lar_words_icon"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/step_item_circle_icon"
+                android:padding="10dp"
+                android:src="@drawable/ic_baseline_volume_up_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/lar_words_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="Listen and repeat words."
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                app:layout_constraintLeft_toRightOf="@id/lar_words_icon"
+                app:layout_constraintRight_toLeftOf="@id/lar_words_check"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:id="@+id/lar_words_check"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/check_png"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/law_container"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="20dp"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/law_icon"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/step_item_circle_icon"
+                android:padding="10dp"
+                android:src="@drawable/ic_baseline_hearing_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/law_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="Listen and write."
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                app:layout_constraintLeft_toRightOf="@id/law_icon"
+                app:layout_constraintRight_toLeftOf="@id/law_check"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:id="@+id/law_check"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/check_png"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/organize_sentences_container"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="20dp"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/organize_sentences_icon"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/step_item_circle_icon"
+                android:padding="10dp"
+                android:src="@drawable/ic_baseline_sort_by_alpha_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/organize_sentences_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="Listen and repeat sentences."
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                app:layout_constraintLeft_toRightOf="@id/organize_sentences_icon"
+                app:layout_constraintRight_toLeftOf="@id/organize_sentences_check"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:id="@+id/organize_sentences_check"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/check_png"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+
+
+    <!--  Top Navbar   -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/base_color"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_baseline_arrow_back_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/stepNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Step name"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
