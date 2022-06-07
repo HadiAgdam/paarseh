@@ -17,17 +17,11 @@
         android:theme="@style/Theme.Paarseh"
         tools:targetApi="31">
         <activity
-            android:name=".MainVideoActivity"
+            android:name=".activity.step.main_video.MainVideoActivity"
             android:exported="false" />
         <activity
             android:name=".activity.step.order_sentences.OrderSentencesActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"/>
         <activity
             android:name=".activity.step.law.ListenAndWriteActivity"
             android:exported="false" />
@@ -47,12 +41,12 @@
             android:name=".activity.splash.SplashActivity"
             android:exported="true">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
+<!---->
+<!---->
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
         </activity>
         <activity
             android:name=".activity.login.LoginActivity"

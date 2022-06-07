@@ -57,8 +57,9 @@ public class ListenAndRepeatSentencesActivity extends AppCompatActivity {
     View.OnClickListener backListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-//            finish();
-            correctAnswer();
+            Toast.makeText(ListenAndRepeatSentencesActivity.this, "CLICK", Toast.LENGTH_LONG).show();
+            finish();
+//            correctAnswer();
         }
     };
 

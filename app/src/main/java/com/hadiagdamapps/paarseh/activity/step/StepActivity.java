@@ -20,6 +20,7 @@ import com.hadiagdamapps.paarseh.activity.login.LoginActivity;
 import com.hadiagdamapps.paarseh.activity.step.lar_sentences.ListenAndRepeatSentencesActivity;
 import com.hadiagdamapps.paarseh.activity.step.lar_words.ListenAndRepeatWordsActivity;
 import com.hadiagdamapps.paarseh.activity.step.law.ListenAndWriteActivity;
+import com.hadiagdamapps.paarseh.activity.step.main_video.MainVideoActivity;
 import com.hadiagdamapps.paarseh.activity.step.order_sentences.OrderSentencesActivity;
 import com.hadiagdamapps.paarseh.helpers.DataManager;
 import com.hadiagdamapps.paarseh.helpers.MySingleton;
@@ -37,8 +38,8 @@ public class StepActivity extends AppCompatActivity {
 
     private int step_id = -1;
     private JSONObject data;
-    private ConstraintLayout lar_sentences_container, lar_words_container, law_container, organize_sentences_container;
-    private ImageView lar_sentences_check, lar_words_check, law_check, organize_sentences_check;
+    private ConstraintLayout lar_sentences_container, lar_words_container, law_container, organize_sentences_container, main_video_container;
+    private ImageView lar_sentences_check, lar_words_check, law_check, organize_sentences_check, main_video_check;
     private TextView stepNameText;
     private ArrayList<String> passed = new ArrayList<>();
 
@@ -54,6 +55,14 @@ public class StepActivity extends AppCompatActivity {
 
         if (passed.contains("law")) {
             law_check.setVisibility(View.VISIBLE);
+        }
+
+        if (passed.contains("order_s")) {
+            organize_sentences_check.setVisibility(View.VISIBLE);
+        }
+
+        if (passed.contains("vid")) {
+            main_video_check.setVisibility(View.VISIBLE);
         }
     }
 
@@ -140,6 +149,14 @@ public class StepActivity extends AppCompatActivity {
             getPassed();
         }
     };
+    View.OnClickListener main_video_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            DataManager.writeData(StepActivity.this, "video_src", get("video_src"));
+            startActivity(new Intent(StepActivity.this, MainVideoActivity.class));
+            getPassed();
+        }
+    };
 
     private void initialView() {
         stepNameText = findViewById(R.id.stepNameText);
@@ -149,18 +166,21 @@ public class StepActivity extends AppCompatActivity {
         lar_words_container = findViewById(R.id.lar_words_container);
         law_container = findViewById(R.id.law_container);
         organize_sentences_container = findViewById(R.id.organize_sentences_container);
+        main_video_container = findViewById(R.id.main_video_container);
 
         // setOnClickListener
         lar_sentences_container.setOnClickListener(lar_sentences_container_listener);
         lar_words_container.setOnClickListener(lar_words_container_listener);
         law_container.setOnClickListener(law_container_listener);
         organize_sentences_container.setOnClickListener(organize_sentences_listener);
+        main_video_container.setOnClickListener(main_video_listener);
 
         // initialize check
         lar_sentences_check = findViewById(R.id.lar_sentences_check);
         lar_words_check = findViewById(R.id.lar_words_check);
         law_check = findViewById(R.id.law_check);
         organize_sentences_check = findViewById(R.id.organize_sentences_check);
+        main_video_check = findViewById(R.id.main_video_check);
     }
 
     private void initialize(JSONObject data) {

@@ -25,6 +25,49 @@
         android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main_video_container"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="20dp"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/main_video_icon"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/step_item_circle_icon"
+                android:padding="10dp"
+                android:src="@drawable/ic_baseline_ondemand_video_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/main_video_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="Main Video."
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                app:layout_constraintLeft_toRightOf="@id/main_video_icon"
+                app:layout_constraintRight_toLeftOf="@id/main_video_check"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:id="@+id/main_video_check"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/check_png"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/lar_sentences_container"
             android:layout_width="match_parent"
             android:layout_height="55dp"
@@ -176,7 +219,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:text="Listen and repeat sentences."
+                android:text="Order sentences,"
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 app:layout_constraintLeft_toRightOf="@id/organize_sentences_icon"
@@ -195,6 +238,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
     </LinearLayout>
