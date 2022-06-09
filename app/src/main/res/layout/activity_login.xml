@@ -63,22 +63,15 @@
             android:text="Log in"/>
 
         <TextView
-            android:id="@+id/forgetPasswordText"
+            android:id="@+id/registerText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/link_color"
-            android:text="Forget your password ?"
+            android:text="Don't have account? Register."
             app:layout_constraintTop_toBottomOf="@id/buttonRegister"
             android:layout_marginTop="10dp"/>
 
-        <TextView
-            android:id="@+id/loginWithCodeText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/forgetPasswordText"
-            android:text="Login with verification Code."
-            android:textColor="@color/link_color"
-            android:layout_marginTop="10dp"/>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

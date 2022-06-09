@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -18,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.hadiagdamapps.paarseh.activity.main.MainActivity;
 import com.hadiagdamapps.paarseh.R;
+import com.hadiagdamapps.paarseh.activity.register.RegisterActivity;
 import com.hadiagdamapps.paarseh.helpers.DataManager;
 import com.hadiagdamapps.paarseh.helpers.MySingleton;
 import com.hadiagdamapps.paarseh.helpers.Statics;
@@ -32,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText passwordText;
     private Button loginButton;
     private RecyclerView alertRecycler;
+    private TextView registerText;
 
     private void notFound(){
         Toast.makeText(this, "incorrect username or password.", Toast.LENGTH_LONG).show();
@@ -39,13 +42,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private void success(JSONObject data){
         try {
-//            SharedPreferences preferences = getApplicationContext().getSharedPreferences("user", MODE_PRIVATE);
-//            SharedPreferences.Editor editor = preferences.edit();
-//            editor.putString("name", data.getString("name"));
-//            editor.putString("phone", data.getString("phone"));
-//            editor.putString("password", data.getString("password"));
-//            editor.commit();
-
             DataManager.writeData(this, USER_NAME_KEY, data.getString("name"));
             DataManager.writeData(this, USER_PHONE_KEY, data.getString("phone"));
             DataManager.writeData(this, USER_PASSWORD_KEY, data.getString("password"));
@@ -101,11 +97,20 @@ public class LoginActivity extends AppCompatActivity {
         }
     };
 
+    View.OnClickListener registerListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+        }
+    };
+
     private void initialView(){
         phoneText = findViewById(R.id.phoneText);
         passwordText = findViewById(R.id.passwordText);
         loginButton = findViewById(R.id.buttonRegister);
         loginButton.setOnClickListener(buttonLoginListener);
+        registerText = findViewById(R.id.registerText);
+        registerText.setOnClickListener(registerListener);
     }
 
     private void main(){
