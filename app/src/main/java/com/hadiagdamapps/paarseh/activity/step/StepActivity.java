@@ -152,7 +152,7 @@ public class StepActivity extends AppCompatActivity {
     View.OnClickListener main_video_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            DataManager.writeData(StepActivity.this, "video_src", get("video_src"));
+            DataManager.writeData(StepActivity.this, "step_id", step_id + "");
             startActivity(new Intent(StepActivity.this, MainVideoActivity.class));
             getPassed();
         }
@@ -231,7 +231,6 @@ public class StepActivity extends AppCompatActivity {
     }
 
     private void main() {
-        Bundle b = this.getIntent().getExtras();
         String d = DataManager.readData(this, DataManager.Keys.STEP_ID_KEY);
         if (d == null) return;
         step_id = Integer.parseInt(d);

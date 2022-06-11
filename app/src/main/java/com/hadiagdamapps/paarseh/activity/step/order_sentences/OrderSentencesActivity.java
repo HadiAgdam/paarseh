@@ -44,7 +44,6 @@ public class OrderSentencesActivity extends AppCompatActivity {
         if (phone == null || password == null || step_id_text == null) {
             Toast.makeText(this,"NULL data", Toast.LENGTH_LONG).show();
         }
-        Toast.makeText(this, "Passed", Toast.LENGTH_LONG).show();
         StringRequest request = new StringRequest(Statics.BASE_URL + "addPassed?phone=" + phone + "&password=" + password + "&step_id=" + step_id_text + "&practice=order_sentences", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

@@ -112,7 +112,6 @@ public class ListenAndWriteActivity extends AppCompatActivity {
             Toast.makeText(this, "NULL data", Toast.LENGTH_LONG).show();
             Log.e("NULL data","");
         }
-        Toast.makeText(this, "Passed", Toast.LENGTH_LONG).show();
         StringRequest request = new StringRequest(Statics.BASE_URL + "addPassed?phone=" + phone + "&password=" + password + "&step_id=" + step_id_text + "&practice=law", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

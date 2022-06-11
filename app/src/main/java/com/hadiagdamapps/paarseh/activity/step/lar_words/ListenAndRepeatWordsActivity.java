@@ -52,7 +52,6 @@ public class ListenAndRepeatWordsActivity extends AppCompatActivity {
         if (phone == null || password == null || step_id_text == null) {
             toast("NULL data");
         }
-        Toast.makeText(this, "Passed", Toast.LENGTH_LONG).show();
         StringRequest request = new StringRequest(Statics.BASE_URL + "addPassed?phone=" + phone + "&password=" + password + "&step_id=" + step_id_text + "&practice=lar_w", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -125,7 +124,7 @@ public class ListenAndRepeatWordsActivity extends AppCompatActivity {
     }
 
     private void toast(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 
     private void wrongAnimation() {

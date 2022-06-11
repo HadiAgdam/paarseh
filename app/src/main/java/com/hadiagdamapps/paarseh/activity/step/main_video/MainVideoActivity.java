@@ -1,10 +1,16 @@
 package com.hadiagdamapps.paarseh.activity.step.main_video;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.media.MediaPlayer;
+import android.media.PlaybackParams;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.webkit.WebView;
 import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -20,7 +26,7 @@ import com.hadiagdamapps.paarseh.helpers.Statics;
 
 public class MainVideoActivity extends AppCompatActivity {
 
-    private VideoView videoView;
+    private WebView webView;
 
     private void end() {
         String phone = DataManager.readData(this, DataManager.Keys.USER_PHONE_KEY);
@@ -62,23 +68,25 @@ public class MainVideoActivity extends AppCompatActivity {
         MySingleton.getInstance(MainVideoActivity.this).addToRequestQueue(request);
     }
 
-    private void initialVideoPlayer() {
-        String video_src = DataManager.readData(this, "video_src");
-        MediaController controller = new MediaController(this);
-        controller.setAnchorView(videoView);
-        videoView.setMediaController(controller);
+    @SuppressLint("SetJavaScriptEnabled")
+    private void initialWebView() {
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
 
-        videoView.setVideoURI(Uri.parse(video_src));
-        videoView.start();
+        String step_id = DataManager.readData(this, "step_id");
+        String phone = DataManager.readData(this, DataManager.Keys.USER_PHONE_KEY);
+        String password = DataManager.readData(this, DataManager.Keys.USER_PASSWORD_KEY);
+
+        webView.loadUrl("https://hadiagdam.pythonanywhere.com/playVideo?phone=" + phone + "&password=" + password + "&step_id=" + step_id);
     }
 
     private void initialView() {
-        videoView = findViewById(R.id.videoView);
+        webView = findViewById(R.id.webView);
     }
 
     private void main() {
         initialView();
-        initialVideoPlayer();
+        initialWebView();
     }
 
     @Override
