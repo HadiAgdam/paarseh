@@ -55,6 +55,8 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                     checkButton.setEnabled(true);
                     Log.e("response", response);
 
+                    Toast.makeText(VerifyPhoneActivity.this, "Code: " + response ,Toast.LENGTH_LONG).show();
+
                     switch (response) {
                         case "invalid phone":
                             Toast.makeText(VerifyPhoneActivity.this, "لطفا از اول ثبت نام کنید", Toast.LENGTH_LONG).show();

@@ -89,8 +89,8 @@ public class ListenAndRepeatWordsActivity extends AppCompatActivity {
     View.OnClickListener backListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-//            finish();
-            correctAnswer();
+            finish();
+//            correctAnswer();
         }
     };
 
